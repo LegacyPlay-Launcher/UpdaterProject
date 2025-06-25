@@ -1,6 +1,3 @@
-from urllib.request import _UrlopenRet
-
-
 import os
 import urllib.request
 import urllib.error
@@ -58,7 +55,7 @@ class UpdaterWorker(QObject):
             self.cleanup()
             self.finished.emit(False, str(e))
 
-    def get_online_version(self) -> _UrlopenRet | None:
+    def get_online_version(self):
         try:
             with urllib.request.urlopen("https://legacyplay.retify.lol/current_ver.txt", timeout=10) as response:
                 return response.read().decode('utf-8').strip()
